@@ -1,6 +1,6 @@
 import { createSignal } from 'solid-js'
 
-export default function BingoSquare({ text: string }) {
+export default function BingoSquare(props: { text: string }) {
   const [clicked, set_clicked] = createSignal(false)
   const [css_class, set_css_class] = createSignal('bingo-square')
 
@@ -15,7 +15,7 @@ export default function BingoSquare({ text: string }) {
 
   return (
     <>
-      <button class={css_class()}>{text}</button>
+      <button class={css_class()}>{props.text}</button>
       <style>
         {`
           .bingo-square {
@@ -26,12 +26,17 @@ export default function BingoSquare({ text: string }) {
             text-align: center;
             font-size: 0.9rem;
             box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.05);
-            transition: background 250ms ease
+            transition: background 250ms ease;
           }
 
           .clicked {
-            background: #ccccbe6
-            transition: background 250ms ease
+            background: #ddddbe6;
+            transition: background 250ms ease;
+          }
+
+          .bingo-square:hover {
+            background: #ccccbe6;
+            transition: background 250ms ease;
           }
         `}
       </style>
